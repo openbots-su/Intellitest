@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30804.86
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Intellitest", "Intellitest\Intellitest.csproj", "{5A0E761D-974D-4E68-9F20-A9EE860E13AD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IntelliForm", "IntelliForm\IntelliForm.csproj", "{E3EB894A-7554-4B1C-A670-4AF84E4FF005}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5A0E761D-974D-4E68-9F20-A9EE860E13AD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5A0E761D-974D-4E68-9F20-A9EE860E13AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5A0E761D-974D-4E68-9F20-A9EE860E13AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5A0E761D-974D-4E68-9F20-A9EE860E13AD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E3EB894A-7554-4B1C-A670-4AF84E4FF005}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E3EB894A-7554-4B1C-A670-4AF84E4FF005}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E3EB894A-7554-4B1C-A670-4AF84E4FF005}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E3EB894A-7554-4B1C-A670-4AF84E4FF005}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {888D9EAF-4D5D-4466-8D60-CCA4A592C129}
+	EndGlobalSection
+EndGlobal

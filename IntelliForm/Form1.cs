@@ -176,9 +176,19 @@ namespace IntelliForm
                 Point point = activeCodeInput.GetPositionFromCharIndex(activeCodeInput.SelectionStart);
                 point = activeGridView.Location;
                 var cellColMultiplier = activeGridView.CurrentCellAddress.Y + 1;
-                
+                List<int> colWidths = new List<int>();
+                foreach (DataGridViewColumn col in activeGridView.Columns)
+                {
+                    colWidths.Add(col.Width);
+                }
+                Point currentCellAddress = activeGridView.CurrentCellAddress;
+                int widthToAdd = 0;
+                for(int i = 0; i < currentCellAddress.X; i++)
+                {
+                    widthToAdd += colWidths[i];
+                }
                 point.Y += activeCodeInput.Location.Y + (int)Math.Ceiling(activeCodeInput.Font.GetHeight()) + 2 + (activeGridView.RowTemplate.Height * cellColMultiplier);
-                point.X += activeCodeInput.Location.X + TextRenderer.MeasureText(activeCodeInput.Text, activeCodeInput.Font).Width + activeGridView.RowHeadersWidth;
+                point.X += activeCodeInput.Location.X + TextRenderer.MeasureText(activeCodeInput.Text, activeCodeInput.Font).Width + activeGridView.RowHeadersWidth + widthToAdd;
                 this.gListBox1.Location = point;
                 this.gListBox1.BringToFront();
                 activeGridView.listBoxShown = true;

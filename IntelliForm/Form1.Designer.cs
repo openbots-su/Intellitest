@@ -38,10 +38,12 @@ namespace IntelliForm
             this._myImageList = new System.Windows.Forms.ImageList(this.components);
             this.codeInput2 = new System.Windows.Forms.TextBox();
             this.codeGridView1 = new IntelliForm.CodeGridView();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridView1 = new IntelliForm.CodeGridView();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.gListBox1 = new IntelliForm.GListBox();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.codeGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -87,7 +89,9 @@ namespace IntelliForm
             // 
             this.codeGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.codeGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Column2});
+            this.Column2,
+            this.Column3,
+            this.Column4});
             this.codeGridView1.Location = new System.Drawing.Point(0, 288);
             this.codeGridView1.Name = "codeGridView1";
             this.codeGridView1.RowHeadersWidth = 51;
@@ -95,13 +99,6 @@ namespace IntelliForm
             this.codeGridView1.Size = new System.Drawing.Size(788, 150);
             this.codeGridView1.TabIndex = 6;
             this.codeGridView1.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.dataGridView1_EditingControlShowing);
-            // 
-            // Column2
-            // 
-            this.Column2.HeaderText = "Column2";
-            this.Column2.MinimumWidth = 6;
-            this.Column2.Name = "Column2";
-            this.Column2.Width = 700;
             // 
             // dataGridView1
             // 
@@ -137,6 +134,26 @@ namespace IntelliForm
             this.gListBox1.DoubleClick += new System.EventHandler(this.listBoxAutoComplete_DoubleClick);
             this.gListBox1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.listBoxAutoComplete_KeyDown);
             // 
+            // Column2
+            // 
+            this.Column2.HeaderText = "Column2";
+            this.Column2.MinimumWidth = 6;
+            this.Column2.Name = "Column2";
+            // 
+            // Column3
+            // 
+            this.Column3.HeaderText = "Column3";
+            this.Column3.MinimumWidth = 6;
+            this.Column3.Name = "Column3";
+            this.Column3.Width = 200;
+            // 
+            // Column4
+            // 
+            this.Column4.HeaderText = "Column4";
+            this.Column4.MinimumWidth = 6;
+            this.Column4.Name = "Column4";
+            this.Column4.Width = 200;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -167,6 +184,8 @@ namespace IntelliForm
         private DataGridViewTextBoxColumn Column1;
         private CodeGridView codeGridView1;
         private DataGridViewTextBoxColumn Column2;
+        private DataGridViewTextBoxColumn Column3;
+        private DataGridViewTextBoxColumn Column4;
     }
 }
 

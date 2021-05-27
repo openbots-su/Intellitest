@@ -25,6 +25,7 @@ namespace IntelliForm
         private bool keepHidden = false;
         private TextBox activeCodeInput;
         private CodeGridView activeGridView;
+        private int carotLocation; 
         public Form1()
         {
             InitializeComponent();
@@ -57,7 +58,8 @@ namespace IntelliForm
             if (this.wordMatched)
             {
                 // insert selected item
-                string fill = this.gListBox1.SelectedItem.ToString();
+                activeCodeInput.SelectionStart = carotLocation;
+                activeCodeInput.SelectionLength = 0;
 
                 string precursorText = activeCodeInput.Text.Substring(0, activeCodeInput.SelectionStart);
                 string postcursorText = activeCodeInput.Text.Substring(activeCodeInput.SelectionStart);
@@ -158,6 +160,7 @@ namespace IntelliForm
         private void textBoxCodeInput_textChanged(object sender, EventArgs e)
         {
             activeCodeInput = (TextBox)sender;
+            carotLocation = activeCodeInput.SelectionStart;
             if (populateListBox() && !keepHidden)
             {
                 // Find the position of the caret
@@ -177,6 +180,7 @@ namespace IntelliForm
         private void codeInput_textChanged(object sender, EventArgs e)
         {
             activeCodeInput = (TextBox)sender;
+            carotLocation = activeCodeInput.SelectionStart;
             if (populateListBox() && !keepHidden)
             {
                 // Find the position of the caret

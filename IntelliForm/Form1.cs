@@ -45,7 +45,8 @@ namespace IntelliForm
                 this.wordMatched = true;
                 this.selectItem();
                 currentListBox.Hide();
-                activeGridView.listBoxShown = false;
+                if (activeGridView != null)
+                    activeGridView.listBoxShown = false;
                 activeCodeInput.Focus();
                 this.wordMatched = false;
             }
@@ -58,8 +59,14 @@ namespace IntelliForm
                 // insert selected item
                 string fill = this.gListBox1.SelectedItem.ToString();
 
-                activeCodeInput.Text = activeCodeInput.Text.Substring(0, activeCodeInput.TextLength - charsToRemoveList[this.gListBox1.SelectedIndex]).Insert(activeCodeInput.SelectionStart - charsToRemoveList[this.gListBox1.SelectedIndex], completionList[this.gListBox1.SelectedIndex]);
-                
+                string precursorText = activeCodeInput.Text.Substring(0, activeCodeInput.SelectionStart);
+                string postcursorText = activeCodeInput.Text.Substring(activeCodeInput.SelectionStart);
+                string initialText = precursorText.Substring(0, precursorText.Length - charsToRemoveList[this.gListBox1.SelectedIndex]);
+                string postInsertionText = initialText.Insert(precursorText.Length - charsToRemoveList[this.gListBox1.SelectedIndex], completionList[this.gListBox1.SelectedIndex]);
+                activeCodeInput.Text = postInsertionText + postcursorText;
+                if (activeGridView != null)
+                    activeGridView.CurrentCell.Value = activeCodeInput.Text;
+
                 activeCodeInput.SelectionStart = activeCodeInput.Text.Length;
             }
         }

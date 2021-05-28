@@ -170,23 +170,29 @@ namespace IntelliForm
 
                 string[] lines = activeCodeInput.Text.Split(new char[] { '\r', '\n' });
                 List<string> filteredLines = new List<string>();
+                int strippedChars = lines.Length - 1;
                 foreach (string line in lines)
                 {
                     if (line != "")
                         filteredLines.Add(line);
                 }
-                int x = activeCodeInput.Text.Length;
                 int lengthSum = 0;
+                int trailingLengthSum = 0;
                 int currentLine = 1;
+                int carotLocationOnLine = carotLocation;
                 for (int i = 0; i < filteredLines.Count; i++)
                 {
-                    lengthSum += filteredLines[i].Length+1;
-                    if (carotLocation < lengthSum + filteredLines.Count)
-                        currentLine = i+1;
+                    if (carotLocation < lengthSum + strippedChars)
+                        continue;
+                    currentLine = i + 1;
+                    carotLocationOnLine = carotLocation - (lengthSum + i*2);
+                    lengthSum += filteredLines[i].Length;
                 }
 
+                int lineLength = TextRenderer.MeasureText(filteredLines[currentLine - 1].Substring(0, carotLocationOnLine), activeCodeInput.Font).Width;
+
                 point.Y += activeCodeInput.Location.Y + ((int)Math.Ceiling(activeCodeInput.Font.GetHeight()) * currentLine) + 2;
-                point.X += activeCodeInput.Location.X + TextRenderer.MeasureText(filteredLines[currentLine-1], activeCodeInput.Font).Width;
+                point.X += activeCodeInput.Location.X + lineLength;
                 this.gListBox1.Location = point;
                 this.gListBox1.BringToFront();
                 this.gListBox1.Show();

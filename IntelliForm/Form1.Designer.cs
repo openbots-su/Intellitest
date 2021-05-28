@@ -38,12 +38,12 @@ namespace IntelliForm
             this._myImageList = new System.Windows.Forms.ImageList(this.components);
             this.codeInput2 = new System.Windows.Forms.TextBox();
             this.codeGridView1 = new IntelliForm.CodeGridView();
-            this.dataGridView1 = new IntelliForm.CodeGridView();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.gListBox1 = new IntelliForm.GListBox();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridView1 = new IntelliForm.CodeGridView();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.gListBox1 = new IntelliForm.GListBox();
             ((System.ComponentModel.ISupportInitialize)(this.codeGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -54,8 +54,9 @@ namespace IntelliForm
             this.codeInput1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.codeInput1.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.codeInput1.Location = new System.Drawing.Point(0, 0);
+            this.codeInput1.Multiline = true;
             this.codeInput1.Name = "codeInput1";
-            this.codeInput1.Size = new System.Drawing.Size(800, 24);
+            this.codeInput1.Size = new System.Drawing.Size(800, 450);
             this.codeInput1.TabIndex = 0;
             this.codeInput1.TextChanged += new System.EventHandler(this.textBoxCodeInput_textChanged);
             this.codeInput1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.codeInput_keyDown);
@@ -100,6 +101,27 @@ namespace IntelliForm
             this.codeGridView1.TabIndex = 6;
             this.codeGridView1.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.dataGridView1_EditingControlShowing);
             // 
+            // Column2
+            // 
+            this.Column2.HeaderText = "Column2";
+            this.Column2.MinimumWidth = 6;
+            this.Column2.Name = "Column2";
+            this.Column2.Width = 125;
+            // 
+            // Column3
+            // 
+            this.Column3.HeaderText = "Column3";
+            this.Column3.MinimumWidth = 6;
+            this.Column3.Name = "Column3";
+            this.Column3.Width = 200;
+            // 
+            // Column4
+            // 
+            this.Column4.HeaderText = "Column4";
+            this.Column4.MinimumWidth = 6;
+            this.Column4.Name = "Column4";
+            this.Column4.Width = 200;
+            // 
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -133,26 +155,6 @@ namespace IntelliForm
             this.gListBox1.SelectedIndexChanged += new System.EventHandler(this.listBoxAutoComplete_SelectedIndexChanged);
             this.gListBox1.DoubleClick += new System.EventHandler(this.listBoxAutoComplete_DoubleClick);
             this.gListBox1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.listBoxAutoComplete_KeyDown);
-            // 
-            // Column2
-            // 
-            this.Column2.HeaderText = "Column2";
-            this.Column2.MinimumWidth = 6;
-            this.Column2.Name = "Column2";
-            // 
-            // Column3
-            // 
-            this.Column3.HeaderText = "Column3";
-            this.Column3.MinimumWidth = 6;
-            this.Column3.Name = "Column3";
-            this.Column3.Width = 200;
-            // 
-            // Column4
-            // 
-            this.Column4.HeaderText = "Column4";
-            this.Column4.MinimumWidth = 6;
-            this.Column4.Name = "Column4";
-            this.Column4.Width = 200;
             // 
             // Form1
             // 

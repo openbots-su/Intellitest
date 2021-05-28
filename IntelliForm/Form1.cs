@@ -60,16 +60,18 @@ namespace IntelliForm
                 // insert selected item
                 activeCodeInput.SelectionStart = carotLocation;
                 activeCodeInput.SelectionLength = 0;
-
+                int selectedIndex = this.gListBox1.SelectedIndex;
+                string intellisenseString = completionList[this.gListBox1.SelectedIndex];
+                
                 string precursorText = activeCodeInput.Text.Substring(0, activeCodeInput.SelectionStart);
                 string postcursorText = activeCodeInput.Text.Substring(activeCodeInput.SelectionStart);
-                string initialText = precursorText.Substring(0, precursorText.Length - charsToRemoveList[this.gListBox1.SelectedIndex]);
-                string postInsertionText = initialText.Insert(precursorText.Length - charsToRemoveList[this.gListBox1.SelectedIndex], completionList[this.gListBox1.SelectedIndex]);
+                string initialText = precursorText.Substring(0, precursorText.Length - charsToRemoveList[selectedIndex]);
+                string postInsertionText = initialText.Insert(precursorText.Length - charsToRemoveList[selectedIndex], intellisenseString);
                 activeCodeInput.Text = postInsertionText + postcursorText;
                 if (activeGridView != null)
                     activeGridView.CurrentCell.Value = activeCodeInput.Text;
 
-                activeCodeInput.SelectionStart = activeCodeInput.Text.Length;
+                activeCodeInput.SelectionStart = initialText.Length + intellisenseString.Length;
             }
         }
 
@@ -164,10 +166,27 @@ namespace IntelliForm
             if (populateListBox() && !keepHidden)
             {
                 // Find the position of the caret
-                Point point = activeCodeInput.GetPositionFromCharIndex(activeCodeInput.SelectionStart);
+                Point point = activeCodeInput.GetPositionFromCharIndex(carotLocation);
 
-                point.Y += activeCodeInput.Location.Y + (int)Math.Ceiling(activeCodeInput.Font.GetHeight()) + 2;
-                point.X += activeCodeInput.Location.X + TextRenderer.MeasureText(activeCodeInput.Text, activeCodeInput.Font).Width;
+                string[] lines = activeCodeInput.Text.Split(new char[] { '\r', '\n' });
+                List<string> filteredLines = new List<string>();
+                foreach (string line in lines)
+                {
+                    if (line != "")
+                        filteredLines.Add(line);
+                }
+                int x = activeCodeInput.Text.Length;
+                int lengthSum = 0;
+                int currentLine = 1;
+                for (int i = 0; i < filteredLines.Count; i++)
+                {
+                    lengthSum += filteredLines[i].Length+1;
+                    if (carotLocation < lengthSum + filteredLines.Count)
+                        currentLine = i+1;
+                }
+
+                point.Y += activeCodeInput.Location.Y + ((int)Math.Ceiling(activeCodeInput.Font.GetHeight()) * currentLine) + 2;
+                point.X += activeCodeInput.Location.X + TextRenderer.MeasureText(filteredLines[currentLine-1], activeCodeInput.Font).Width;
                 this.gListBox1.Location = point;
                 this.gListBox1.BringToFront();
                 this.gListBox1.Show();

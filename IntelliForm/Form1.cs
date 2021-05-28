@@ -23,7 +23,7 @@ namespace IntelliForm
         private List<string> completionList;
         private List<int> charsToRemoveList;
         private bool keepHidden = false;
-        private TextBox activeCodeInput;
+        private CustomTextBox activeCodeInput;
         private CodeGridView activeGridView;
         private int carotLocation; 
         public Form1()
@@ -48,6 +48,7 @@ namespace IntelliForm
                 currentListBox.Hide();
                 if (activeGridView != null)
                     activeGridView.listBoxShown = false;
+                activeCodeInput.listBoxShown = false;
                 activeCodeInput.Focus();
                 this.wordMatched = false;
             }
@@ -161,7 +162,7 @@ namespace IntelliForm
 
         private void textBoxCodeInput_textChanged(object sender, EventArgs e)
         {
-            activeCodeInput = (TextBox)sender;
+            activeCodeInput = (CustomTextBox)sender;
             carotLocation = activeCodeInput.SelectionStart;
             if (populateListBox() && !keepHidden)
             {
@@ -195,6 +196,7 @@ namespace IntelliForm
                 point.X += activeCodeInput.Location.X + lineLength;
                 this.gListBox1.Location = point;
                 this.gListBox1.BringToFront();
+                activeCodeInput.listBoxShown = true;
                 this.gListBox1.Show();
             }
             else
@@ -204,7 +206,7 @@ namespace IntelliForm
         }
         private void codeInput_textChanged(object sender, EventArgs e)
         {
-            activeCodeInput = (TextBox)sender;
+            activeCodeInput = (CustomTextBox)sender;
             carotLocation = activeCodeInput.SelectionStart;
             if (populateListBox() && !keepHidden)
             {
@@ -228,12 +230,14 @@ namespace IntelliForm
                 this.gListBox1.Location = point;
                 this.gListBox1.BringToFront();
                 activeGridView.listBoxShown = true;
+                activeCodeInput.listBoxShown = true;
                 this.gListBox1.Show();
             }
             else
             {
                 this.gListBox1.Hide();
                 activeGridView.listBoxShown = false;
+                activeCodeInput.listBoxShown = false;
             }
         }
 
@@ -253,6 +257,7 @@ namespace IntelliForm
                 this.gListBox1.Hide();
                 if (activeGridView != null)
                     activeGridView.listBoxShown = false;
+                activeCodeInput.listBoxShown = false;
                 keepHidden = true;
             }
             else if(e.KeyCode == Keys.Back || e.KeyCode == Keys.Left || e.KeyCode == Keys.Right)
@@ -260,6 +265,7 @@ namespace IntelliForm
                 this.gListBox1.Hide();
                 if (activeGridView != null)
                     activeGridView.listBoxShown = false;
+                activeCodeInput.listBoxShown = false;
                 keepHidden = true;
             }
             else if (e.KeyCode == Keys.Up)

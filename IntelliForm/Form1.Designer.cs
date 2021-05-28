@@ -34,7 +34,7 @@ namespace IntelliForm
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            this.codeInput1 = new System.Windows.Forms.TextBox();
+            this.codeInput1 = new CustomTextBox();
             this._myImageList = new System.Windows.Forms.ImageList(this.components);
             this.codeInput2 = new System.Windows.Forms.TextBox();
             this.codeGridView1 = new IntelliForm.CodeGridView();
@@ -178,7 +178,7 @@ namespace IntelliForm
 
         #endregion
 
-        private System.Windows.Forms.TextBox codeInput1;
+        private CustomTextBox codeInput1;
         private ImageList _myImageList;
         private GListBox gListBox1;
         private TextBox codeInput2;
